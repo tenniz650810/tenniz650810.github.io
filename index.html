@@ -3,14 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大富翁機會卡</title>
+    <title>楠高大富翁 - 機會卡片</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>🎲 大富翁機會卡 🎲</h1>
-        <button onclick="drawChanceCard()">抽取機會卡</button>
-        <div id="result" class="result"></div>
+        <h1>楠高大富翁 🎲 機會卡片</h1>
+        <div class="card-container" onclick="flipCard()">
+            <div class="card" id="chance-card">
+                <!-- 卡片正面 -->
+                <div class="card-front">
+                    <img src="images/card_front.jpg" alt="機會卡片封面">
+                </div>
+                <!-- 卡片背面（翻轉後顯示） -->
+                <div class="card-back">
+                    <div id="chance-content">
+                        <img id="chance-img" src="" alt="機會事件">
+                        <p id="chance-text">點擊抽取機會卡</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
