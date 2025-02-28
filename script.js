@@ -38,3 +38,4 @@ function flipCard() {
     // 翻轉動畫
     card.classList.toggle("flip");
 }
+git status
