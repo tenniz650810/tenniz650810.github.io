@@ -39,3 +39,6 @@ function flipCard() {
     card.classList.toggle("flip");
 }
 git status
+git fetch --all
+git reset --hard origin/<分支名稱>
+git pull
