@@ -31,11 +31,45 @@ function flipCard() {
     // 隨機抽一張機會卡
     let randomChance = chances[Math.floor(Math.random() * chances.length)];
 
-    // 設定卡片內容
-    imgElement.src = randomChance.img; // 📌 確保 images/ 內有這些圖片
-    textElement.textContent = randomChance.text;
-
     // 翻轉動畫
     card.classList.toggle("flip");
+
+    // 設定延遲時間（例如，延遲1秒，1000毫秒）
+    const delay = 300; // 1秒
+
+    // 使用 setTimeout 延遲設置圖片和文本
+    setTimeout(() => {
+        imgElement.src = randomChance.img; // 📌 確保 images/ 內有這些圖片
+        textElement.textContent = randomChance.text;
+    }, delay);
 }
 
+// 擲骰子動畫
+function rollDice() {
+    let dice = document.getElementById("dice");
+
+    if (!dice) {
+        console.error("❌ 找不到骰子元素！");
+        return;
+    }
+
+    let diceValue = Math.floor(Math.random() * 6) + 1;
+    let rotations = {
+        1: "rotateX(0deg) rotateY(0deg)",  
+        2: "rotateX(0deg) rotateY(-90deg)", 
+        3: "rotateX(0deg) rotateY(-180deg)", 
+        4: "rotateX(0deg) rotateY(90deg)",  
+        5: "rotateX(-90deg) rotateY(0deg)", 
+        6: "rotateX(90deg) rotateY(0deg)"  
+    };
+
+    // Shorten initial rotation time to 0.3 seconds
+    dice.style.transition = "transform 0.3s ease-in-out"; 
+    dice.style.transform = `rotateX(${360 * 5}deg) rotateY(${360 * 5}deg)`; 
+
+    setTimeout(() => {
+        // Shorten final transition time to 0.5 seconds
+        dice.style.transition = "transform 0.5s ease-out"; 
+        dice.style.transform = rotations[diceValue];
+    }, 1500); // Reduced time to 1500ms (faster delay)
+}
