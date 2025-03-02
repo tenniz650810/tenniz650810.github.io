@@ -79,3 +79,63 @@ h1 {
     color: black;
     font-weight: bold;
 }
+
+/* 3D 骰子 */
+.scene {
+    width: 120px;
+    height: 120px;
+    perspective: 600px;
+    margin: 30px auto;
+}
+
+.cube {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg);
+    transition: transform 3s ease-out;
+}
+
+.face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 設定骰子的 6 個面位置 */
+.face1 { transform: translateZ(50px); }
+.face2 { transform: rotateY(90deg) translateZ(50px); }
+.face3 { transform: rotateY(180deg) translateZ(50px); }
+.face4 { transform: rotateY(-90deg) translateZ(50px); }
+.face5 { transform: rotateX(90deg) translateZ(50px); }
+.face6 { transform: rotateX(-90deg) translateZ(50px); }
+
+/* 骰子點數 */
+.dot {
+    width: 20px;
+    height: 20px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.dot-center { top: 40%; left: 40%; }
+.dot-top-left { top: 15%; left: 15%; }
+.dot-top-right { top: 15%; right: 15%; }
+.dot-middle-left { top: 40%; left: 15%; }
+.dot-middle-right { top: 40%; right: 15%; }
+.dot-bottom-left { bottom: 15%; left: 15%; }
+.dot-bottom-right { bottom: 15%; right: 15%; }
+
+/* 卡片區域 */
+.card-container {
+    margin-top: 20px;
+    font-size: 18px;
+}
