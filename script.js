@@ -70,5 +70,5 @@ function rollDice() {
         // Shorten final transition time to 0.5 seconds
         dice.style.transition = "transform 0.5s ease-out"; 
         dice.style.transform = rotations[diceValue];
-    }, 1000); // Reduced time to 1000ms (faster delay)
+    }, 500); // Reduced time to 1000ms (faster delay)
 }
