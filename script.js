@@ -62,11 +62,13 @@ function rollDice() {
         5: "rotateX(-90deg) rotateY(0deg)", 
         6: "rotateX(90deg) rotateY(0deg)"  
     };
-
+    // Shorten initial rotation time to 0.3 seconds
+    dice.style.transition = "transform 0.3s ease-in-out"; 
+    dice.style.transform = `rotateX(${360 * 5}deg) rotateY(${360 * 5}deg)`; 
 
     setTimeout(() => {
         // Shorten final transition time to 0.5 seconds
         dice.style.transition = "transform 0.5s ease-out"; 
         dice.style.transform = rotations[diceValue];
-    }, 1500); // Reduced time to 1500ms (faster delay)
+    }, 1500); // Reduced time to 1000ms (faster delay)
 }
