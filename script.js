@@ -47,6 +47,8 @@ function flipCard() {
 // 擲骰子動畫
 function rollDice() {
     let dice = document.getElementById("dice");
+function rollDice() {
+    let dice = document.getElementById("dice");
 
     if (!dice) {
         console.error("❌ 找不到骰子元素！");
@@ -62,11 +64,24 @@ function rollDice() {
         5: "rotateX(-90deg) rotateY(0deg)", 
         6: "rotateX(90deg) rotateY(0deg)"  
     };
-    // Shorten initial rotation time to 0.3 seconds
-    dice.style.transition = "transform 0.3s ease-in-out"; 
-    dice.style.transform = `rotateX(${360 * 5}deg) rotateY(${360 * 5}deg)`; 
 
-    setTimeout(() => {
+    let startTime = Date.now();
+    let interval = setInterval(() => {
+        let elapsed = Date.now() - startTime;
+
+        if (elapsed >= 2000) {  
+            clearInterval(interval); // 2 秒後停止快速旋轉
+            dice.style.transition = "transform 1s ease-out"; 
+            dice.style.transform = rotations[diceValue]; // 設定最終結果
+        } else {
+            // 讓骰子快速隨機旋轉
+            let randX = Math.floor(Math.random() * 360);
+            let randY = Math.floor(Math.random() * 360);
+            dice.style.transition = "transform 0.1s linear"; // 縮短單次變換時間
+            dice.style.transform = `rotateX(${randX}deg) rotateY(${randY}deg)`;
+        }
+    }, 100); // 每 100ms 隨機旋轉一次
+}
         // Shorten final transition time to 0.5 seconds
         dice.style.transition = "transform 0.5s ease-out"; 
         dice.style.transform = rotations[diceValue];
